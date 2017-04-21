@@ -1062,22 +1062,32 @@ static int nn_global_create_ep (struct nn_sock *sock, const char *addr,
     if (strlen (addr) >= NN_SOCKADDR_MAX)
         return -ENAMETOOLONG;
 
-    /*  Separate the protocol and the actual address. */
-    proto = addr;
-    delim = strchr (addr, ':');
+    delim = strchr(addr, ':');
     if (!delim)
-        return -EINVAL;
+	return -EINVAL;
     if (delim [1] != '/' || delim [2] != '/')
         return -EINVAL;
-    protosz = delim - addr;
-    addr += protosz + 3;
 
-    /*  Find the specified protocol. */
     tp = NULL;
-    for (i = 0; ((tp = nn_transports[i]) != NULL); i++) {
-        if (strlen (tp->name) == protosz &&
-              memcmp (tp->name, proto, protosz) == 0)
-            break;
+    protosz = delim - addr;
+    if (protosz > 4 && memcmp(addr, "tcl+", 4) == 0)
+    {
+        tp = &nn_tcl;
+        addr += 4;
+    }
+
+    if (!tp)
+    {
+        proto = addr;
+        for (i = 0; ((tp = nn_transports[i]) != NULL); ++i)
+        {
+            if (strlen(tp->name) == protosz &&
+                memcmp(tp->name, proto, protosz) == 0)
+            {
+                addr += protosz + 3;
+                break;
+            }
+        }
     }
 
     /*  The protocol specified doesn't match any known protocol. */
