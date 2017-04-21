@@ -99,6 +99,8 @@ extern struct nn_socktype nn_xrespondent_socktype;
 extern struct nn_socktype nn_xsurveyor_socktype;
 extern struct nn_socktype nn_bus_socktype;
 extern struct nn_socktype nn_xbus_socktype;
+extern struct nn_socktype nn_tclrelays_socktype;
+extern struct nn_socktype nn_xtclrelays_socktype;
 
 /*  Array of known socket types. */
 const struct nn_socktype *nn_socktypes[] = {
@@ -122,6 +124,8 @@ const struct nn_socktype *nn_socktypes[] = {
     &nn_xsurveyor_socktype,
     &nn_bus_socktype,
     &nn_xbus_socktype,
+    &nn_tclrelays_socktype,
+    &nn_xtclrelays_socktype,
     NULL,
 };
 
@@ -132,12 +136,14 @@ extern struct nn_transport nn_inproc;
 extern struct nn_transport nn_ipc;
 extern struct nn_transport nn_tcp;
 extern struct nn_transport nn_ws;
+extern struct nn_transport nn_tcl;
 
 const struct nn_transport *nn_transports[] = {
     &nn_inproc,
     &nn_ipc,
     &nn_tcp,
     &nn_ws,
+    &nn_tcl,
     NULL,
 };
 

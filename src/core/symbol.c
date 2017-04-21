@@ -28,6 +28,7 @@
 #include "../inproc.h"
 #include "../ipc.h"
 #include "../tcp.h"
+#include "../../../src/tcl.h"
 
 #include "../pair.h"
 #include "../pubsub.h"
@@ -36,6 +37,7 @@
 #include "../survey.h"
 #include "../bus.h"
 #include "../ws.h"
+#include "../../../src/tclrelays.h"
 
 #include <string.h>
 
@@ -82,6 +84,7 @@ static const struct nn_symbol_properties sym_value_names [] = {
     NN_SYM(NN_IPC, TRANSPORT, NONE, NONE),
     NN_SYM(NN_TCP, TRANSPORT, NONE, NONE),
     NN_SYM(NN_WS, TRANSPORT, NONE, NONE),
+    NN_SYM(NN_TCL, TRANSPORT, NONE, NONE),
 
     NN_SYM(NN_PAIR, PROTOCOL, NONE, NONE),
     NN_SYM(NN_PUB, PROTOCOL, NONE, NONE),
@@ -93,6 +96,7 @@ static const struct nn_symbol_properties sym_value_names [] = {
     NN_SYM(NN_SURVEYOR, PROTOCOL, NONE, NONE),
     NN_SYM(NN_RESPONDENT, PROTOCOL, NONE, NONE),
     NN_SYM(NN_BUS, PROTOCOL, NONE, NONE),
+    NN_SYM(NN_TCL_RELAYS, PROTOCOL, NONE, NONE),
 
     NN_SYM(NN_SOCKADDR_MAX, LIMIT, NONE, NONE),
 

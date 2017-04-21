@@ -37,7 +37,7 @@
 struct nn_pipe;
 
 /*  The maximum implemented transport ID. */
-#define NN_MAX_TRANSPORT 4
+#define NN_MAX_TRANSPORT 5
 
 struct nn_sock
 {
